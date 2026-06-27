@@ -1,0 +1,75 @@
+# ─────────────────────────────────────────
+#  Python
+# ─────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# ─────────────────────────────────────────
+#  Virtual environments
+# ─────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.conda/
+anaconda_projects/
+
+# ─────────────────────────────────────────
+#  Jupyter / IPython
+# ─────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.ipynb_metadata
+
+# ─────────────────────────────────────────
+#  IDE / OS
+# ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─────────────────────────────────────────
+#  Data & Models  (use Git LFS or DVC)
+# ─────────────────────────────────────────
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.onnx
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Keep sample/small CSVs tracked, ignore large ones
+# *.csv          ← commented out so small datasets are version-controlled
+
+# ─────────────────────────────────────────
+#  Logs / Outputs
+# ─────────────────────────────────────────
+logs/
+*.log
+runs/
+mlruns/
+wandb/
+*.tfevents.*
+tempCodeRunnerFile.py
+
+# ─────────────────────────────────────────
+#  Misc
+# ─────────────────────────────────────────
+.env
+.env.local
+secrets.yaml
