@@ -5,10 +5,11 @@ import seaborn as sns
 import warnings
 
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
 
 warnings.filterwarnings("ignore")
 
-file = pd.read_csv(r"Machine_Learning\ML1\Linear_regression_mode\insurance.csv")
+file = pd.read_csv(r"Machine_Learning\ML1\Linear_regression_mode\Insurance\insurance.csv")
 # print(file.head())
 # print(file.shape)
 # print(file.info())
@@ -80,3 +81,23 @@ df_clean[cols]=scaler.fit_transform(df_clean[cols])
 
 
 print(df_clean)
+
+x=df_clean.drop('charges',axis=1)
+y=df_clean['charges']
+X_train,X_test ,y_train,y_test =train_test_split(x,y,test_size =0.20, random_state=42)
+
+from sklearn.linear_model import LinearRegression
+
+model=LinearRegression()
+model.fit(X_train,y_train) 
+
+y_pred =model.predict(X_test)
+
+from sklearn.metrics import r2_score
+
+r2=r2_score(y_test,y_pred)
+print(r2)
+n=X_test.shape[0]
+p=X_test.shape[1]
+adjusted_r2 =1-((1-r2)*(n-1)/(n-p-1))
+print(adjusted_r2)
