@@ -37,7 +37,7 @@ Machine_Learning/
 │       ├── heart.csv
 │       └── Figure_1~5.png             ← Generated EDA plots
 │
-└── ML1/                               ← Supervised & Unsupervised algorithms
+└── Suprevised_learning/               ← Supervised & Unsupervised algorithms
     ├── Linear_regression_mode/        ← Linear Regression projects
     │   ├── Insurance/                 ← Predicting insurance charges
     │   │   ├── main.py
@@ -47,8 +47,12 @@ Machine_Learning/
     │       └── ford.csv
     ├── Iris_project/                  ← Classification on Iris dataset
     │   └── iris-dataset.py
-    └── KMeans_clustering_project/     ← Customer segmentation with K-Means
-        └── KMeans_Clustering.py
+    ├── KMeans_clustering_project/     ← Customer segmentation with K-Means
+    │   └── KMeans_Clustering.py
+    ├── Logistic_resgression/          ← Logistic Regression on Titanic
+    │   └── titanic.py
+    └── KNN(K Nearst Neighbour)/       ← K-Nearest Neighbours on Titanic
+        └── titanic.py
 ```
 
 ---
@@ -69,31 +73,43 @@ Machine_Learning/
 
 ---
 
-### 🤖 Module 2 — ML Algorithms (ML1/)
+### 🤖 Module 2 — Supervised & Unsupervised Learning (`Suprevised_learning/`)
 
 #### 📈 Linear Regression — Insurance Charges Prediction
 - **Dataset:** [Kaggle Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance)
 - **Goal:** Predict medical insurance charges from age, BMI, smoker status etc.
 - **Techniques:** Feature encoding, Standard Scaler, `LinearRegression`
-- **Folder:** `ML1/Linear_regression_mode/Insurance/`
+- **Folder:** `Suprevised_learning/Linear_regression_mode/Insurance/`
 
 #### 🚗 Linear Regression — Ford Car Price Prediction
 - **Dataset:** Ford Car Price dataset (`ford.csv`)
 - **Goal:** Predict the price of a Ford car from its features (year, mileage, engine size etc.)
 - **Techniques:** Feature encoding, `LinearRegression`, model evaluation
-- **Folder:** `ML1/Linear_regression_mode/Ford_car_price model/`
+- **Folder:** `Suprevised_learning/Linear_regression_mode/Ford_car_price model/`
 
 #### 🌸 Classification — Iris Flower Species
 - **Dataset:** Scikit-learn built-in Iris dataset (150 samples, 3 classes)
 - **Goal:** Classify flowers into *Setosa / Versicolor / Virginica*
 - **Techniques:** `DecisionTreeClassifier`, train/test split, `accuracy_score`
-- **Folder:** `ML1/Iris_project/`
+- **Folder:** `Suprevised_learning/Iris_project/`
 
 #### 🔵 Unsupervised — K-Means Customer Segmentation
 - **Dataset:** Mall Customers CSV
 - **Goal:** Segment customers by Annual Income & Spending Score
 - **Techniques:** `StandardScaler`, Elbow Method, `KMeans`, Silhouette Score, cluster visualisation
-- **Folder:** `ML1/KMeans_clustering_project/`
+- **Folder:** `Suprevised_learning/KMeans_clustering_project/`
+
+#### 📊 Logistic Regression — Titanic Survival Prediction
+- **Dataset:** Titanic (loaded via Seaborn)
+- **Goal:** Predict passenger survival (binary classification)
+- **Techniques:** `LabelEncoder`, `LogisticRegression`, `accuracy_score`, `classification_report`
+- **Folder:** `Suprevised_learning/Logistic_resgression/`
+
+#### 🔍 K-Nearest Neighbours — Titanic Survival Prediction
+- **Dataset:** Titanic (loaded via Seaborn)
+- **Goal:** Predict passenger survival using distance-based classification
+- **Techniques:** `StandardScaler`, `KNeighborsClassifier` (k=5), `confusion_matrix`, `classification_report`
+- **Folder:** `Suprevised_learning/KNN(K Nearst Neighbour)/`
 
 ---
 
@@ -124,16 +140,22 @@ pip install -r requirements.txt
 ### 4. Run any script
 ```bash
 # Example — Insurance Linear Regression
-python ML1/Linear_regression_mode/Insurance/main.py
+python Suprevised_learning/Linear_regression_mode/Insurance/main.py
 
 # Example — Ford Car Price Prediction
-python "ML1/Linear_regression_mode/Ford_car_price model/main.py"
+python "Suprevised_learning/Linear_regression_mode/Ford_car_price model/main.py"
 
 # Example — Iris classification
-python ML1/Iris_project/iris-dataset.py
+python Suprevised_learning/Iris_project/iris-dataset.py
 
 # Example — K-Means clustering
-python ML1/KMeans_clustering_project/KMeans_Clustering.py
+python Suprevised_learning/KMeans_clustering_project/KMeans_Clustering.py
+
+# Example — Logistic Regression (Titanic)
+python Suprevised_learning/Logistic_resgression/titanic.py
+
+# Example — KNN (Titanic)
+python "Suprevised_learning/KNN(K Nearst Neighbour)/titanic.py"
 ```
 
 ---
@@ -144,6 +166,8 @@ python ML1/KMeans_clustering_project/KMeans_Clustering.py
 |---|---|---|---|
 | Iris Classification | Decision Tree | Accuracy | **~97 %** |
 | Customer Segmentation | K-Means (k=5) | Silhouette Score | **~0.55** |
+| Titanic Survival | Logistic Regression | Accuracy | **~80 %** |
+| Titanic Survival | KNN (k=5) | Accuracy | **~79 %** |
 | Insurance Prediction | Linear Regression | R² Score | In progress |
 | Ford Car Price Prediction | Linear Regression | R² Score | In progress |
 
@@ -154,6 +178,8 @@ python ML1/KMeans_clustering_project/KMeans_Clustering.py
 - [x] **Data Preprocessing** — Handling nulls, encoding, scaling, splitting
 - [x] **Supervised Learning** — Linear Regression (Insurance & Ford Car Price), Decision Tree Classification
 - [x] **Unsupervised Learning** — K-Means Clustering, Elbow Method
+- [x] **Logistic Regression** — Binary classification on Titanic dataset
+- [x] **K-Nearest Neighbours (KNN)** — Distance-based classification on Titanic dataset
 - [ ] **Model Evaluation** — Cross-validation, confusion matrix, ROC-AUC
 - [ ] **Ensemble Methods** — Random Forest, Gradient Boosting (XGBoost)
 - [ ] **Neural Networks** — Intro with TensorFlow / PyTorch
@@ -170,10 +196,13 @@ python ML1/KMeans_clustering_project/KMeans_Clustering.py
 | `get_dummies` | One-hot encoding with pandas |
 | `train_test_split` | Stratified splitting for unbiased evaluation |
 | `LinearRegression` | OLS-based regression for continuous targets |
+| `LogisticRegression` | Sigmoid-based binary/multi-class classification |
 | `DecisionTreeClassifier` | Tree-based classification, interpretable |
+| `KNeighborsClassifier` | Distance-based lazy learner for classification |
 | `KMeans` | Centroid-based unsupervised clustering |
 | Elbow Method | Optimal K selection via inertia plot |
 | Silhouette Score | Cluster quality metric (−1 to +1) |
+| `classification_report` | Precision, Recall, F1-score per class |
 
 ---
 
